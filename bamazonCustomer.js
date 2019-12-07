@@ -27,14 +27,14 @@ const productsTable = function() {
             if (err) {
                 throw err;
             }
-            console.log("************************".blue + " New Order ".yellow + "****************************".blue)
+            console.log("\n************************".cyan + " New Order ".yellow + "****************************\n".cyan)
             console.table(results)
-            askQuestions()
+            customerQuestions()
         }
     )
 }
 
-const askQuestions = function() {
+const customerQuestions = function() {
     inquirer.prompt([
         {
             type: "input",
@@ -61,12 +61,11 @@ const verifyQuantity = function(answers) {
         }
         
         if (response[0].quantity < answers.quantity) {
-            console.log("Product is currently out of stock. \nWe will notify you when the product is available.".red)
-            console.log("******************************************************".blue)
+            console.log("\nProduct is currently out of stock. \nWe will notify you when the product is available.\n".red)
 
-            productsTable()
+            closeShop()
         } else {
-            console.log("The order is being processed.".blue)
+            console.log("\nThe order is being processed.".blue)
 
             let updatedQuantity = response[0].quantity - answers.quantity
             connection.query(
@@ -78,14 +77,18 @@ const verifyQuantity = function(answers) {
                     if (err) {
                         throw err;
                     }
-                    productsTable()
+                    console.log("\nThank you for your order. Come back soon!".green + "\n");
+                    closeShop()
                 }
             )
 
             let quantityCalc = response[0].price * answers.quantity
-            console.log("Your order total is: $".cyan + quantityCalc)
+            console.log("\nYour order total is: $".cyan + quantityCalc)
         }
     })
 }
 
+const closeShop = function() {
+    connection.end();
+}
 
