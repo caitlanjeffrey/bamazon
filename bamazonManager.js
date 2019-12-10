@@ -19,28 +19,90 @@ connection.connect(function(err){
     managerQuestions()
 })
 
-const managerQuestions = function() {
-    inquirer.prompt([
-        {
-            type: "checkbox",
-            name: "menuOptions",
-            message: "Select a menu option:",
-            choices: ["Available Products", "Low Inventory", "Add to Inventory", "Add New Product"]
-        },
-    ]).then(managerAnswers => {
-        console.log(managerAnswers)
-        // verifyManager(managerAnswers)
+function managerQuestions() {
+    inquirer.prompt({
+        name: "menuOptions",
+        type: "list",
+        message: "Select a menu option:",
+        choices: ["Available Products", "Low Inventory", "Add to Inventory", "Add New Product", "Exit"]
+    }).then(managerAnswers => {
+        switch(managerAnswers.menuOptions) {
+            case "Available Products":
+                availProducts();
+                break;
+            case "Low Inventory":
+                lowInventory();
+                break;
+            case "Add to Inventory":
+                addInventory();
+                break;
+            case "Add New Product":
+                addProduct();
+                break;
+            case "Exit":
+                closeShop();
+                break;
+            default:
+                console.log("These are not the droids you are looking for.")
+        }
     });
 }
 
-// const verifyManager = function() {
-//     connection.query(query, function(err, response){
-//         if (err) {
-//             throw err;
-//         }
+function availProducts() {
+    connection.query(
+        "SELECT * FROM products",
+        function(err, results) {
+            if (err) {
+                throw err;
+            }
+            console.log("\n************************".cyan + " Available Products ".yellow + "****************************\n".cyan)
+            console.table(results)
+            managerQuestions()
+        }
+    )
+}
 
-//         if (answers[0]) {
+function lowInventory() {
+    var query = "SELECT * FROM products WHERE quantity < 5";
+    connection.query(query, function(err, results) {
+        if (err) {
+            throw err;
+        }
+        console.log("\n************************".red + " Low Inventory ".red + "****************************\n".red)
+        console.table(results)
+        managerQuestions()
+        }
+    )
+}
 
-//         }
-//     })
-// }
+function addInventory() {
+    console.log("howdy")
+    connection.query(
+        "SELECT *",
+        function(err, results) {
+            if (err) {
+                throw err;
+            }
+            console.table(results)
+            managerQuestions()
+        }
+    )
+}
+
+function addProduct() {
+    console.log("dandy")
+    connection.query(
+        "SELECT *",
+        function(err, results) {
+            if (err) {
+                throw err;
+            }
+            console.table(results)
+            managerQuestions()
+        }
+    )
+}
+
+const closeShop = function() {
+    connection.end();
+} 
