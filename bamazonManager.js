@@ -15,7 +15,7 @@ connection.connect(function(err){
     if (err) {
         throw err;
     }
-    console.log("Welcome to Geoffry Aezos's Bamazon:".magenta, connection.threadId)
+    console.log("Welcome Karen: ".magenta, connection.threadId)
     managerQuestions()
 })
 
@@ -149,7 +149,7 @@ function addProduct() {
 }
 
 function newProductQuestions() {
-    
+
     inquirer.prompt([
         {
             type: "input",
@@ -176,43 +176,34 @@ function newProductQuestions() {
     });
 }
 
+//fix set issue
 function verifyProductQuestions(productAnswers) {
-    // var values = (productAnswers.product + "," + productAnswers.department + "," + productAnswers.price + "," + productAnswers.quantity + ",")
-    var query = "INSERT INTO products (product, department, price, quantity) VALUES(?)"
-    // var values = (productAnswers.product + "," + productAnswers.department + "," + productAnswers.price + "," + productAnswers.quantity + ",")
+    
+    const v1 = "(" + productAnswers.product + ", "
+    const v2 = productAnswers.department + ", "
+    const v3 = productAnswers.price + ", "
+    const v4  = productAnswers.quantity + ")"
+    
+    var query = "INSERT INTO products (product, department, price, quantity) VALUES " + v1 + v2 + v3 + v4
+    console.log(query)
+
+
+    var post  = {id: 1, title: 'Hello MySQL'};
+var query = connection.query('INSERT INTO posts SET ?', post, function (error, results, fields) {
+  if (error) throw error;
+  // Neat!
+});
+console.log(query.sql);
 
     connection.query(query, function(err, response){
         if (err) {
             throw err;
         }
 
-        console.log("The product has been added.")
+        console.log("The product has been added.".green)
         console.table(results)
         closeShop()
-        // if (response[0].quantity > 5000) {
-        //     console.log("\nProduct cannot be reordered at this time. \nProduct stock needs to sell.\n".red)
 
-        //     closeShop()
-        // } else {
-        //     console.log("\nThe product is being reordered".blue)
-
-        //     let updatedInventory = response[0].quantity + inventoryAnswers.quantity
-
-        //     connection.query(
-        //         "UPDATE products SET quantity = ? WHERE id = ?",
-        //         [
-        //             updatedInventory, inventoryAnswers.id
-        //         ],
-        //         function(err, response) {
-        //             if (err) {
-        //                 throw err;
-        //             }
-        //             console.log("\nThank you for your reorder. Come back soon!".green + "\n");
-
-        //             closeShop()
-        //         }
-        //     )
-        // }
     })
 }
 
