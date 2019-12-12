@@ -68,6 +68,7 @@ const verifyQuantity = function(answers) {
             console.log("\nThe order is being processed.".blue)
 
             let updatedQuantity = response[0].quantity - answers.quantity
+
             connection.query(
                 "UPDATE products SET quantity = ? WHERE id = ?",
                 [
@@ -78,10 +79,10 @@ const verifyQuantity = function(answers) {
                         throw err;
                     }
                     console.log("\nThank you for your order. Come back soon!".green + "\n");
+
                     closeShop()
                 }
             )
-
             let quantityCalc = response[0].price * answers.quantity
             console.log("\nYour order total is: $".cyan + quantityCalc)
         }
@@ -91,4 +92,3 @@ const verifyQuantity = function(answers) {
 const closeShop = function() {
     connection.end();
 }
-
