@@ -15,7 +15,7 @@ connection.connect(function(err){
     if (err) {
         throw err;
     }
-    console.log("Welcome Karen: ".magenta, connection.threadId)
+    console.log("Welcome Store Manager - Karen: ".magenta, connection.threadId)
     managerQuestions()
 })
 
@@ -61,7 +61,7 @@ function availProducts() {
             }
             console.log("\n************************".cyan + " Available Products ".yellow + "****************************\n".cyan)
             console.table(results)
-            managerQuestions()
+            closeShop()
         }
     )
 }
@@ -176,35 +176,14 @@ function newProductQuestions() {
     });
 }
 
-//fix set issue
 function verifyProductQuestions(productAnswers) {
     
-    const v1 = "(" + productAnswers.product + ", "
-    const v2 = productAnswers.department + ", "
-    const v3 = productAnswers.price + ", "
-    const v4  = productAnswers.quantity + ")"
-    
-    var query = "INSERT INTO products (product, department, price, quantity) VALUES " + v1 + v2 + v3 + v4
-    console.log(query)
+    connection.query('INSERT INTO products SET ?', productAnswers, function (error, results, fields) {
+        if (error) throw error;
+    });
 
-
-    var post  = {id: 1, title: 'Hello MySQL'};
-var query = connection.query('INSERT INTO posts SET ?', post, function (error, results, fields) {
-  if (error) throw error;
-  // Neat!
-});
-console.log(query.sql);
-
-    connection.query(query, function(err, response){
-        if (err) {
-            throw err;
-        }
-
-        console.log("The product has been added.".green)
-        console.table(results)
-        closeShop()
-
-    })
+    console.log("The new product has been added to the Bamazon Store.".green)
+    closeShop()
 }
 
 const closeShop = function() {
