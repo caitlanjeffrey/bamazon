@@ -71,4 +71,4 @@ Step Four: node liri.js do-what-it-says
 Caitlan Jeffrey
 
 # Special Thanks
-Thanks to my TA's for helping me through my project!
+Thanks to my Tutor (Isabel) and TA's (Austin and Leah) for helping me through my project!
