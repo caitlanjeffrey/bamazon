@@ -1,30 +1,28 @@
 # BAMAZON-MySQL-App:
 Geoffry Aezos's Bamazon Welcomes You!
 
-LIRI is like SIRI. However, while SIRI is a Speech Interpretation and Recognition Interface, LIRI is a Language Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives you back data.
+BAMAZON is like AMAZON. However, while AMAZON is owned by Jeff Bezos,BAMAZON is owned by his lesser know twin brother Geoff Aezos. BAMAZON is a command line node and mysql app that takes in parameters and gives you back data. The app has three views: Customer, Store Manager and District Supervior!
 
-# LIRI uses the following commands:
-    * Concerts/Bands:
-        'concert-this'
-    * Songs:
-        'spotify-this-song'
-    * Movies:
-        'movie-this'
-    * Command:
-        'do-what-it-says'
+# BAMAZON uses the following list of example commands:
+    * Customer:
+        The customer view is all about adding items to a shopping cart and receiving an order total.
+    * Store Manager:
+        This view helps the store manager assess low inventory, available products, adding new products to the store and reordering products.
+    * District Supervisor:
+        This view is all about meeting sales goals. The district supervisor has to know if products are selling and if the store is profitable!
 
 # Technologies used:
     * Node.js
     * Javascript
+    * MySQL
 
 # npm packages:
-spotify - A simple API library for the Spotify REST API.
-axios - Axiox is designed to be the simplest way possible to make http calls.
-dotenv - Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env.
-fs - File read package
+mysql - A package that connects to MySQL databases and tables.
+console.table - A package that improves table views.
+inquirer - A simple NPM package that allows questions to be asked through the command line.
 colors - adding a bit of flare when separating the commands above.
 
-# How to Run LIRI-Bot:
+# How to Run BAMAZON:
 Step One: node liri concert-this <artist name here> will show the artist that you searched.
 
     This will show the following information about the artist in your terminal/bash window:
