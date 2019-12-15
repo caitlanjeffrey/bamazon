@@ -22,7 +22,7 @@ connection.connect(function(err){
 const productsTable = function() {
 
     connection.query(
-        "SELECT * FROM products",
+        "SELECT id, product, department, price, sales FROM products",
         function(err, results) {
             if (err) {
                 throw err;
@@ -68,11 +68,14 @@ const verifyQuantity = function(answers) {
             console.log("\nThe order is being processed.".blue)
 
             let updatedQuantity = response[0].quantity - answers.quantity
+            let purchaseTotal = response[0].price * answers.quantity
+            let sales = purchaseTotal
+            let totalSales = sales + purchaseTotal
 
             connection.query(
-                "UPDATE products SET quantity = ? WHERE id = ?",
+                "UPDATE products SET quantity = ?, sales = ? WHERE id = ?",
                 [
-                    updatedQuantity, answers.id
+                    updatedQuantity, totalSales, answers.id
                 ],
                 function(err, response) {
                     if (err) {
@@ -83,8 +86,7 @@ const verifyQuantity = function(answers) {
                     closeShop()
                 }
             )
-            let quantityCalc = response[0].price * answers.quantity
-            console.log("\nYour order total is: $".cyan + quantityCalc)
+            console.log("\nYour order total is: $".cyan + purchaseTotal)
         }
     })
 }
