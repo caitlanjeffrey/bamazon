@@ -16,11 +16,11 @@ BAMAZON is like AMAZON. However, while AMAZON is owned by Jeff Bezos,BAMAZON is 
     * Javascript
     * MySQL
 
-# npm packages:
-mysql - A package that connects to MySQL databases and tables.
-console.table - A package that improves table views.
-inquirer - A simple NPM package that allows questions to be asked through the command line.
-colors - adding a bit of flare when separating the commands above.
+# NPM Packages:
+    * mysql - A package that connects to MySQL databases and tables.
+    * console.table - A package that improves table views.
+    * inquirer - A simple NPM package that allows questions to be asked through the command line.
+    * colors - adding a bit of flare when separating the commands above.
 
 # How to Run BAMAZON:
 Step One: node liri concert-this <artist name here> will show the artist that you searched.
