@@ -23,7 +23,7 @@ BAMAZON is like AMAZON. However, while AMAZON is owned by Jeff Bezos,BAMAZON is 
     * colors - adding a bit of flare when separating the commands above.
 
 # How to Run BAMAZON:
-Step One: node liri concert-this <artist name here> will show the artist that you searched.
+bamazonCustomer: node liri concert-this <artist name here> will show the artist that you searched.
 
     This will show the following information about the artist in your terminal/bash window:
 
@@ -35,7 +35,7 @@ Step One: node liri concert-this <artist name here> will show the artist that yo
 
     If no concert is provided then the program will default to "Taylor Swift" (./images/concert-this-noArtist.png).
 
-Step Two: node liri spotify-this-song <song name here> will show the song that you searched.
+bamazonManager: node liri spotify-this-song <song name here> will show the song that you searched.
 
     This will show the following information about the song in your terminal/bash window:
 
@@ -47,7 +47,7 @@ Step Two: node liri spotify-this-song <song name here> will show the song that y
 
     If no song is provided then the program will default to "Barbie Tingz" by Nicki Minaj (./images/songs-noSongSelected.png).
 
-Step Three: node liri.js movie-this <movie name here>.
+bamazonSupervisor: node liri.js movie-this <movie name here>.
 
     This will output the following information to your terminal/bash window:
 

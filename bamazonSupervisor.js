@@ -27,13 +27,13 @@ function supervisorQuestions() {
         type: "list",
         message: "Select a menu option:",
         choices: ["Prodcut Sales by Department", "Create New Department", "Exit"]
-    }).then(managerAnswers => {
-        switch(managerAnswers.menuOptions) {
+    }).then(supervisorAnswers => {
+        switch(supervisorAnswers.menuOptions) {
             case "Prodcut Sales by Department":
                 productSales();
                 break;
             case "Create New Department":
-                newDepartment();
+                // newDepartment();
                 break;
             case "Exit":
                 closeShop();
@@ -45,7 +45,7 @@ function supervisorQuestions() {
 }
 
 function productSales() {
-    var query = "SELECT * FROM products WHERE department = ?";
+    var query = "SELECT * FROM products",
 
     connection.query(query, function(err, results) {
         if (err) {

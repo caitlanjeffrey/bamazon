@@ -54,7 +54,6 @@ function availProducts() {
     connection.query(
 
         "SELECT * FROM products",
-
         function(err, results) {
             if (err) {
                 throw err;
@@ -107,7 +106,7 @@ function verifyIventoryQuestions(inventoryAnswers) {
         if (err) {
             throw err;
         }
-        
+
         if (response[0].quantity > 5000) {
             console.log("\nProduct cannot be reordered at this time. \nProduct stock needs to sell.\n".red)
 
@@ -127,7 +126,6 @@ function verifyIventoryQuestions(inventoryAnswers) {
                         throw err;
                     }
                     console.log("\nThank you for your reorder. Come back soon!".green + "\n");
-
                     closeShop()
                 }
             )
@@ -159,7 +157,7 @@ function newProductQuestions() {
         {
             type: "input",
             name: "department",
-            message: "Please enter a department name: (example: Food - Deli)"
+            message: "Please enter a department name: (example: Food - Bakery)"
         },
         {
             type: "number",
@@ -177,11 +175,16 @@ function newProductQuestions() {
 }
 
 function verifyProductQuestions(productAnswers) {
-    
-    connection.query('INSERT INTO products SET ?', productAnswers, function (error, results, fields) {
-        if (error) throw error;
-    });
 
+    connection.query(
+        "INSERT INTO products SET ?", 
+        productAnswers, 
+        function (error, results, fields) {
+            if (error) {
+                throw error;
+            }
+        }
+    );
     console.log("The new product has been added to the Bamazon Store.".green)
     closeShop()
 }

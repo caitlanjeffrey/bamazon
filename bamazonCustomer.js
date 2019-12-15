@@ -35,6 +35,7 @@ const productsTable = function() {
 }
 
 const customerQuestions = function() {
+
     inquirer.prompt([
         {
             type: "input",
@@ -82,7 +83,6 @@ const verifyQuantity = function(answers) {
                         throw err;
                     }
                     console.log("\nThank you for your order. Come back soon!".green + "\n");
-
                     closeShop()
                 }
             )
