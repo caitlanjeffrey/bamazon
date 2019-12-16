@@ -22,7 +22,7 @@ connection.connect(function(err){
 const productsTable = function() {
 
     connection.query(
-        "SELECT id, product, department, price, sales FROM products",
+        "SELECT id, product, department, price FROM products",
         function(err, results) {
             if (err) {
                 throw err;
@@ -63,8 +63,7 @@ const verifyQuantity = function(answers) {
         
         if (response[0].quantity < answers.quantity) {
             console.log("\nProduct is currently out of stock. \nWe will notify you when the product is available.\n".red)
-
-            closeShop()
+            customerQuestions()
         } else {
             console.log("\nThe order is being processed.".blue)
 

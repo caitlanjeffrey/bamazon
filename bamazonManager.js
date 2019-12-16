@@ -53,7 +53,7 @@ function availProducts() {
 
     connection.query(
 
-        "SELECT * FROM products",
+        "SELECT id, product, department, price, quantity FROM products",
         function(err, results) {
             if (err) {
                 throw err;

@@ -23,49 +23,42 @@ BAMAZON is like AMAZON. However, while AMAZON is owned by Jeff Bezos,BAMAZON is 
     * colors - adding a bit of flare when separating the commands above.
 
 # How to Run BAMAZON:
-bamazonCustomer: node liri concert-this <artist name here> will show the artist that you searched.
+bamazonCustomer: node bamazonCustomer.js will display products available for purchase through the Bamazon site:
 
-    This will show the following information about the artist in your terminal/bash window:
+    This will show the following information about the products listed in your terminal/bash window:
 
-    Artist name
-    Venue name
-    City, State, Country where concert is held
-    Time of concert
-    Example: (./images/concert-this-artistSelected.png)
+        Product ID
+        Product Name
+        Department
+        Price
 
-    If no concert is provided then the program will default to "Taylor Swift" (./images/concert-this-noArtist.png).
+    The user will be directed to adding a 'Product ID' and 'Quantity' to their cart.
 
-bamazonManager: node liri spotify-this-song <song name here> will show the song that you searched.
+    The app will check to see if the product selected is in stock and if it is, it will total the order and remove the quantity from the store. 
 
-    This will show the following information about the song in your terminal/bash window:
+    IF the product is not in stock, the customer will be notified and returned to the store front.
 
-    Artist(s)
-    The song's name
-    A preview link of the song from Spotify
-    The album that the song is from
-    Example: (./images/songs-songSelected.png)
+bamazonManager: node bamazonManager.js will display a series of questions: 
 
-    If no song is provided then the program will default to "Barbie Tingz" by Nicki Minaj (./images/songs-noSongSelected.png).
+        Available Products
+        Low Inventory
+        Add to Inventory
+        Add New Product
 
-bamazonSupervisor: node liri.js movie-this <movie name here>.
+    Each of these questions will display different information.
 
-    This will output the following information to your terminal/bash window:
+    Available Products: This view will display a table of all of the available products within the store.
 
-    Title of the movie.
-    Plot of the movie.
-    Actors in the movie.
-    Year the movie came out.
-    Country where the movie was produced.
-    Language of the movie.
-    IMDB Rating of the movie.
-    Rotten Tomatoes Rating.
-    Example: (./images/movies-movieSelected.png)
+    Low Inventory: This view will display only products with a low inventory under 5 items.
 
-    If the user doesn't type a movie in, the program will output data for the movie 'Monty Python and the Holy Grail' (./images/movies-noMovieSelected.png).
+    Add to Inventory: This view will request a 'Product ID' and 'Quantity' to reorder.
+        IF the quantity to reorder is over 5000 items, the manager will receive a statement that the products cannot be ordered at this time.
+    
+    Add New Product: This view will display a series of questions to add new products to the store.
 
-Step Four: node liri.js do-what-it-says
+bamazonSupervisor: node bamazonSupervisor.js will display the district supervisor view. 
 
-    This will output the command placed in random.txt file: (./images/do-what-it-says.png)
+    This section is incomplete as of 12/16/19.
 
 # Author
 Caitlan Jeffrey
