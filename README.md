@@ -60,6 +60,8 @@ bamazonSupervisor: node bamazonSupervisor.js will display the district superviso
 
     This section is incomplete as of 12/16/19.
 
+![BAMAZON DEMO](/images/BAMAZON_Customer_&_Manager.mov)
+
 # Author
 Caitlan Jeffrey
 

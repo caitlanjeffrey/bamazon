@@ -1,6 +1,6 @@
-const mysql = require("mysql")
-const cTable = require('console.table');
-const inquirer = require('inquirer');
+const mysql = require("mysql") 
+const cTable = require('console.table')
+const inquirer = require('inquirer')
 const colors = require('colors')
 
 const connection = mysql.createConnection({
